@@ -1,0 +1,35 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Cluster Expansion}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+The cluster expansion is an approach used to construct a basis set. More precisely, it is discrete Fourier transformation on the configuration space.
+On the basis, we can expand any lattice dependent only functions. It's a powerful tool for the investigation of atomic ordering.
+
+Assuming we have a configuration space, $\Omega$. The single site in the configuration space is denoted as 
+$\sigma_i$, and the configuration space is $(\sigma_1, \sigma_2, \dots, \sigma_N)$. For each site, it has different occupation
+element, that is $A = \{\alpha_1, \alpha_2, \dots, \alpha_n\}$.
+
+To define the orthonormal basis here, we have to give out the definition of the inner product first. The inner product
+on the single site $\sigma_i$ is defined as:
+\begin{equation}
+    \braket{f}{g} =\sum_{a=1}^{n} \nu_a f(a)g(a)
+\end{equation}
+Here $\bm{\nu}$ is a reference distribution, which gives the probability of each specific element occupy this site.
+The orthonormal basis is a set of basis that satisfy:
+\begin{equation}
+    \braket{\phi_m}{\phi_n} = \delta_{mn}
+\end{equation}
+It can be proved that, the number of the basis function is equal to the total number of the species.
+The first basis function will always be constant:
+\begin{equation}
+    \phi_0 = 1
+\end{equation}
+The many body basis is defined as:
+\begin{equation}
+    \Psi_{S,\bm{r}}(\bm{\sigma}) = \prod_{i \in S}\phi_{r_i}(\sigma_i) 
+\end{equation}
+$S$ is the set of the site index in this many body term. $r_i \in \{1, 2, \dots, n-1\}$.
+
+\end{document}

@@ -1,0 +1,31 @@
+% Main file for compiling all quantum physics notes.
+\documentclass[12pt,a4paper]{article}
+
+% setting for pages
+\usepackage[margin=1in]{geometry}  % margin
+\setlength{\parskip}{0.8em}        % gap between paragraph
+\setlength{\parindent}{0em}
+
+% mathematical formulation
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{subfiles}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\begin{center}
+    \LARGE \textbf{Statistics Mechanics Notes}
+\end{center}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+\tableofcontents
+\newpage
+
+\subfile{Cluster_expansion/Cluster_expansion}
+\newpage
+%\subfile{}
+
+\end{document}
