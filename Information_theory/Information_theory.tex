@@ -1,0 +1,48 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Information theory}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+In this section, I will introduce the information theory in a very non-rigorous way, to make it easier for understanding.
+
+\subsection{Information}
+Before introducing the concept of information, we have to give some reflection based on daily experience. What does the word ``information'' really mean? If you already know that there is raining outside, will you gain more information if others tell you the weather is rainy? Of course not. This example indicates that, information is something that related to the uncertainty. If you gain some knowledge that is already known, that will not give any extra information since there's no uncertainty. There is a powerful mathematical tool that can quantify the uncertainty, which is called probability. Now we have a general feeling that, if we want to quantify the information, we have to formulate it with probability. Here we can denote it as $I[P(x)]$, or $I(x)$, where the $x$ is the observation value. 
+
+Let's consider another case. For two totally independent events, like ``tomorrow will be rainy'' and ``the sun is in galaxy''. By knowing these two events, the information given by these are totally additive. That means, knowing one event will not influence the information of knowing another event. Formulate it in more rigorous language, that is to say, for two totally independent events, we have equation: 
+
+\begin{equation}
+    I(x, y) = I(x) + I(y)
+\end{equation}
+
+A natural way to realize this is the logarithm function. We can define the Information as:
+
+\begin{equation}
+    I(x) = -k\ln P(x)
+\end{equation}
+
+Information will be positive when $k$ is positive. Thus, we get the expression for Information. We can treat this quantity as the surprise when you receive the occurrence of certain event. If an event that is very rare to happen, then knowing that event will give you a lot of information. In computer science or communication, the definition will usually be written as:
+
+\begin{equation}
+    I(x) = -\log_2 P(x)
+\end{equation}
+
+Which can be directly interpreted into the unit of bits. The base of $2$ refers to the $0$ and $1$ in binary case. For a 50--50 percent probability case, it will carry 1 bit information, or means we only need 1 time of binary measure we can pinpoint the reality. A typical application for this definition is that, if there are $1023$ bottles of water, and $1$ bottle of saline. How much binary test we need to take under the worst case? The answer is $10$ because:
+
+\begin{equation}
+    -\log_2 \frac{1}{1024} = 10
+\end{equation}
+
+This event carries $10$ bits of Information.
+
+\subsection{Information Entropy}
+
+Since information is a quantity that related with probability, it's natural to think that, what the expectation value of information means. Here, for a random variable $X$, we define a new quantity, $S(X)$, as:
+
+\begin{equation}
+    S(X) = -\sum_{x} k P(x)\ln P(x) = \langle I\rangle
+\end{equation}
+
+Which is called information entropy or Shannon entropy. This quantity is used to quantify the average information of a class of uncertain events.
+
+\end{document}
