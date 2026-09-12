@@ -1,0 +1,54 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Manifold}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+\subsection{Basic Concept of Manifold}
+
+Here we only briefly introduce the concept of manifold, and some basic calculation rules, which is useful for the following derivations. The $n$ dimensional manifold $M$ is an object that is continuous and smooth. At each local points, it looks like Euclidean space $\mathbb{R}^n$. For example, the surface of a sphere is a $2$-manifold. For each certain points, if we zoom in, the region around that point will look like a 2D plane. Just like the earth. We feel the ground where we stand at is a plane, while from a macroscopic view, the earth is a sphere.
+
+Manifold itself is an abstract object. To describe the manifold, usually we need to define a set of coordinate functions. For $n$-manifold, if there exists a set of continuous functions $\{X^1, X^2, \dots, X^n\}$, that for each point $p$ in the manifold, there is a map 
+
+\begin{equation}
+    \left(X^1(p), X^2(p), \dots, X^n(p)\right) \in U \subset \mathbb{R}^n.
+\end{equation}
+
+Where $U$ is a set of $n$ dimensional continuous region in the $\mathbb{R}^n$ space. More intuitively speaking, $n$-manifold is isomorphic with a set of $n$ dimensional continuous region in the $\mathbb{R}^n$, and coordinate functions are the one to one mapping between these two objects.
+
+After define a set of coordinate functions, it will be easier for us to do research on other continuous differentiable functions. Assuming we have a continuous function $f$, that for each point $p$ on the manifold, we have $f(p) \to \mathbb{R}$. Since the manifold is locally equivalent to a set of continuous region in $\mathbb{R}^n$, we can try to pretend that the continuous region in $\mathbb{R}^n$ is the manifold itself. For each point $p$, it has a tangent space and cotangent space, which constitutes the dual space. In order to reduce the abstract terminology, we can go back to the picture of the surface of a sphere, or earth. The tangent space is the space that tangent to the surface at $p$. Imagine you stand on the ground, and you can't fly. If you want to move, you have to select a direction. All the direction you can choose is limited into a 2D plane. That's the tangent plane. Let's back to the $n$-manifold. At each point $p$, the tangent space can be represented under the basis $\{\frac{\partial}{\partial X^i}\}$.
+
+Now we get the tangent space done. Next let's look into cotangent space. Note that, here the cotangent is not the real cotangent, it's just the dual space of the tangent space, which is not the cotangent in the geometry. This dual space is designed for quantifying the difference of a certain function value at $p$. For example, you can define a function of elevation at each point on earth, or define a function of magnetic intensity. It's assumed that, when you make a very small movement, which causes a small changes in the coordinates. The relation between small difference of the function and the small movement can be treated as linear. For a general case, it means that, for the continuous differentiable function $f$, the small difference of the function $\dd{f}$, can be expressed by the basis of $\dd{X^i}$. That means:
+
+\begin{equation}
+    \dd{f} = a_i\dd{X^i}
+\end{equation}
+
+Since there are two spaces that constitute the dual relation, we have to define that how the dual space interact with each other. The tangent space provides the direction which you want to explore, while the cotangent space provides the quantity you want to evaluate. The interaction between the dual space and space is that, for any continuous differentiable function $f$, the operation of the cotangent space element $\dd{f}$ and tangent space element $\frac{\partial }{\partial X^j}$ is:
+
+\begin{equation}
+    \dd{f}(\frac{\partial }{\partial X^j}) = \frac{\partial f}{\partial X^j}
+\end{equation}
+
+If $f = X^i$, we define:
+
+\begin{equation}
+    \dd{X^i}(\frac{\partial}{\partial X^j}) = \frac{\partial X^i}{\partial X^j} = \delta^i_j
+\end{equation}
+
+It's trivial because the coordinate function will only change when you move along that coordinate. Combining the previous definition, we have:
+
+\begin{equation}
+    \dd{f}(\frac{\partial }{\partial X^j}) = a_i\dd{X^i}(\frac{\partial }{\partial X^j}) = a_i\delta^i_j
+\end{equation}
+
+Thus, the coefficient $a_i$, which is the component of $\dd{f}$ on the basis $\dd{X^i}$, is $\frac{\partial f}{\partial X^i}$.
+
+
+\subsection{Differential Form}
+
+\subsection{Wedge Product}
+
+\subsection{Legendre Transformation}
+
+\end{document}
