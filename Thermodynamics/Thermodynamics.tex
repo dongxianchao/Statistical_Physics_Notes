@@ -6,6 +6,92 @@
 
 In this section we are going to introduce the basic thermodynamics. We will first, go over the basic thermodynamics from a more abstract point of view, manifold, to understand the mathematical structure within the thermodynamics. Later, we will try to re-formalize it by the tools of information theory, revealing the statistics nature of thermodynamics. 
 
+\subsection{Basic Thermodynamics}
+
+Let's go over the basic assumption of thermodynamics. There are four laws that constitute the fundamental of thermodynamics. 
+
+The zero law is that: If there are three systems, $A$, $B$ and $C$. If $A$ and $B$ reach the thermal equilibrium, $B$ and $C$ reach the thermal equilibrium, then $A$ and $C$ will definitely reach the thermal equilibrium. This law ensures that the definition of the temperature.
+
+Assume we have an enclosed system. The first law can be expressed as:
+
+\begin{equation}
+    \dd{U} = \dd{Q} - \dd{W}
+\end{equation}
+
+Here $Q$ is the heat interaction energy, and $W$ is the mechanical work. This denotes the energy conservation, that the total energy change is equal to the summation of the contribution from the heat exchange and the mechanical work.
+
+The second law can be expressed as:
+
+\begin{equation}
+    \Delta S \ge \frac{\delta Q}{T}.
+\end{equation}
+
+This inequality indicates that, the entropy of an isolated system will always increase, since $\delta Q = 0$.
+
+The third law is that, when $T \to 0$, $S \to 0$ for perfect crystal with individual ground state.
+
+Now let's look into it more abstractly. The equilibrium state of a thermodynamics system, can be treated as an abstract 2D manifold. Here we only consider the fixed particle number case. According to the first law, we can give out the $1$-form on the manifold, that is:
+
+\begin{equation}
+    \dd{U} = T\dd{S} - p\dd{V}
+\end{equation}
+
+Here we can see that, $S$ and $V$ are the natural coordinate function defined on the manifold. Thus for the function $U$, it's natural to denote it as $U(S, V)$. We can apply Legendre transformation on this equation, to change the coordinate functions to its dual case. That is:
+
+\begin{align}
+    \dd{U} - \dd{(TS)} &= -S\dd{T} -p\dd{V}\\
+    \dd{U} + \dd{(pV)} &= T\dd{S} + V\dd{p}\\
+    \dd{U} - \dd{(TS)} + \dd{(pV)} &= -S\dd{T} +V\dd{p}
+\end{align}
+
+Thus, we can define another three different potentials as:
+
+\begin{align}
+    F(T, V) &= U - TS\\
+    G(T, p) &= U - TS + pV\\
+    H(S, p) &= U + pV
+\end{align}
+
+$H$ is the enthalpy, $G$ is the Gibbs free energy, $F$ is the Helmholtz free energy.
+
+\subsection{Maxwell Relation}
+
+Once we accept the language of manifold, the Maxwell relation can be obtained very naturally. For the four different potentials, they are smooth scalar functions, in that case, the second exterior derivatives have to be zero. So we have:
+
+\begin{align}
+    0 = \dd{(\dd{U})} &= \dd{(T\dd{S}-p\dd{V})}\nonumber\\
+    &= (\pdv{T}{V})_S\dd{V}\wedge\dd{S} - (\pdv{p}{S})_V\dd{S}\wedge\dd{V}\nonumber\\
+    &= -(\pdv{T}{V})_S\dd{S}\wedge\dd{V} - (\pdv{p}{S})_V\dd{S}\wedge\dd{V}
+\end{align}
+
+The subscript of the bracket denotes which coordinate functions you are using, reflecting that you are moving along which coordinate function are fixed on the manifold. Similarly, we have:
+
+\begin{align}
+    0 = \dd{(\dd{F})} &= \dd{(-S\dd{T} -p\dd{V})}\nonumber\\
+    &= -(\pdv{S}{V})_T\dd{V}\wedge\dd{T} - (\pdv{p}{T})_V\dd{T}\wedge\dd{V}\nonumber\\
+    &= (\pdv{S}{V})_T\dd{T}\wedge\dd{V} - (\pdv{p}{T})_V\dd{T}\wedge\dd{V}
+\end{align}
+
+\begin{align}
+    0 = \dd{(\dd{G})} &= \dd{(-S\dd{T} +V\dd{p})}\nonumber\\
+    &= -(\pdv{S}{p})_T\dd{p}\wedge\dd{T} + (\pdv{V}{T})_p\dd{T}\wedge\dd{p}\nonumber\\
+    &= (\pdv{S}{p})_T\dd{T}\wedge\dd{p} + (\pdv{V}{T})_p\dd{T}\wedge\dd{p}
+\end{align}
+
+\begin{align}
+    0 = \dd{(\dd{H})} &= \dd{(T\dd{S} + V\dd{p})}\nonumber\\
+    &= (\pdv{T}{p})_S\dd{p}\wedge\dd{S} + (\pdv{V}{S})_p\dd{S}\wedge\dd{p}\nonumber\\
+    &= -(\pdv{T}{p})_S\dd{S}\wedge\dd{p} + (\pdv{V}{S})_p\dd{S}\wedge\dd{p}
+\end{align}
+
+That's the Maxwell relation. Note that, all the $1$-from has the structure as:
+
+\begin{equation}
+    \dd{U} = A\dd{a} + B\dd{b} + \dots
+\end{equation}
+
+Can obtain the similar relation here, by applying the Legendre transformation and $\dd$. The Maxwell relations are precisely such integrability conditions for the thermodynamic potentials.
+
 \subsection{Information Theory Based Derivation}
 
 \end{document}

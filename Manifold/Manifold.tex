@@ -47,8 +47,44 @@ Thus, the coefficient $a_i$, which is the component of $\dd{f}$ on the basis $\d
 
 \subsection{Differential Form}
 
-\subsection{Wedge Product}
+The notation $\dd$ here undertake some specific physical meaning, like in calculus. Here we will still only give a straightforward picture, instead of rigorous definition or derivations. You can understand it as, $\dd$ is an operation that, measure the current of a quantity at an infinitesimal boundary, maybe the object is a function, or field. For example, the elevation function $g$. When you walk along a small distance, $\dd{x}$, and at each point on the trajectory has a gradient. $\dd{g}$ reflects the gradient accumulation along the $\dd{g}$, which is the difference of the elevation function. Or we can understand it conversely. The difference of the elevation function after you walked a small distance $\dd{x}$, is equal to the accumulation of the gradient at each point. Same meaning applies to $\dd^2{g}$, and so on. That means, the difference of $(n - 1)$-form at the boundary, is equal to the accumulation of $n$-form within the area. 
+
+OK maybe it's too abstract, let's treat it as calculus, and remember some basic calculation rules. Here we need to define a rule called wedge product, which is:
+
+\begin{equation}
+    \dd{a}\wedge\dd{b}
+\end{equation}
+
+The wedge product you can treat it as the area that you learned during the calculus, $\dd{x}\dd{y}$, which is an infinitesimal area. But there's a bit of difference, that the $\dd{a}\wedge\dd{b}$ contains the information of direction. Here we have some basic calculation rules for wedge product, assume $\dd{a}$, $\dd{b}$, $\dd{c}$ are $1$-form:
+
+\begin{align}
+    \dd{(a + b)}\wedge\dd{c} &= \dd{a}\wedge\dd{c} + \dd{b}\wedge\dd{c}\\
+    \dd{a}\wedge\dd{b} &= -\dd{b}\wedge\dd{a}\\
+    \dd{(ab)} &= (\dd{a})b + a(\dd{b})
+\end{align}
+
+In general, it's very similar to the case in calculus, only note that we need to add a minus sign if we swap the order. It's trivial that we can infer $\dd{a}\wedge\dd{a} = 0$. Note that, if the basis of the $1$-form $\dd f$ can be denoted as $\dd{X^i}$, then the basis of the $2$-form can be denoted as $\dd{X}^i\wedge \dd X^j$, where $i\neq j$. If $a$ is a smooth $0$-form, then we have $\dd^2{a} = 0$.
+
 
 \subsection{Legendre Transformation}
+
+Legendre transformation is a technical skill that applies to the manifold. By which we can change the coordinate function. For example, assume we have a function $f$, with $1$-form relation:
+
+\begin{equation}
+    \dd f = y\dd x
+\end{equation}
+
+Here we can treat $x$ is the natural variable of function $f$, which is $f(x)$. Then we can deduct the $d(xy)$ in both side, which has:
+\begin{equation}
+    \dd{f}- \dd{(xy)} = y\dd{x} -\dd{(xy)} = -x\dd{y}
+\end{equation}
+
+If we define $g = f - xy$, then we have:
+
+\begin{equation}
+    \dd{g} = -x\dd{y}
+\end{equation}
+
+And the function $y$ is the natural variable of function $g$.
 
 \end{document}
