@@ -1,0 +1,129 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Classical Statistical Mechanics}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+In this section, we will derive the probability distribution of different ensemble. Here ``ensemble'' means the system under different specific boundary conditions. Typically, there are  microcanonical ensemble, canonical ensemble, grand canonical ensemble, and $NPT$ ensemble. Microcanonical ensemble is the system that has the number of particles $N$, the total volume $V$, and the total energy $E$, fixed. Canonical ensemble is the system that has $N$, $V$ fixed, while allowing exchange energy with surroundings. Grand canonical ensemble allows system to exchange not only energy, but the particles. Only requires $V$ fixed. For $NPT$ ensemble, it's obviously that, it fixes the $N$, temperature $T$ and pressure $P$. In general, the probability distribution for all kinds of ensemble, can be derived by maximizing the Shannon entropy, with constraints applied.
+
+\subsection{Microcanonical Ensemble}
+
+Let's look into the easy case, the microcanonical ensemble. In microcanonical ensemble, The total number of particles $N$, total volume $V$, and total energy $E$, are fixed. Assume allowed specific configuration $\sigma_i$ will appear at probability $p_i$, then the only constraints we can apply on the system is the normalization condition, which is:
+
+\begin{equation}
+    \sum_{i} p_i = 1
+\end{equation}
+
+The Lagrange multiplies can be written as:
+
+\begin{equation}
+    L = -\sum_{i} p_i \ln p_i - \alpha(\sum_{i} p_i - 1)
+\end{equation}
+
+Taking derivative gives the equation:
+
+\begin{equation}
+    \pdv{L}{p_i} = -1 - \ln p_i - \alpha = 0
+\end{equation}
+
+We can immediately obtain $p_i = \textrm{const}$. Assuming there's $W$ allowed configurations for given $N$, $V$, $E$, then the probability of any one specific configuration is:
+
+\begin{equation}
+    p_i = \frac{1}{W}
+\end{equation}
+
+And the entropy is:
+
+\begin{equation}
+    S = -k_B \sum_{i} p_i \ln p_i = k_B \ln W
+\end{equation}
+
+\subsection{Canonical Ensemble}
+
+For the canonical ensemble, which fixes the particle number $N$, the volume $V$. The total energy for a specific configuration $\sigma_i$ is no longer fixed, but we know the average energy $U$:
+
+\begin{equation}
+    U = \sum_{i} E_i p_i = \langle E \rangle
+\end{equation}
+
+Also, there is the probability normalization condition, then the Lagrange multiplies is:
+
+\begin{equation}
+    L = -\sum_{i} p_i \ln p_i - \alpha(\sum_{i} p_i - 1) - \beta(\sum_{i} E_i p_i - U)
+\end{equation}
+
+Taking the derivative gives the equation:
+
+\begin{equation}
+    \pdv{L}{p_i} = -1 - \ln p_i - \alpha - \beta E_i = 0
+\end{equation}
+
+Which gives:
+
+\begin{equation}
+    p_i \propto \textrm{e}^{-\beta E_i}
+\end{equation}
+
+We can set the normalization factor as $\frac{1}{Z}$, where $Z$ is the partition function. Now we can get that:
+
+\begin{equation}
+    p_i = \frac{\textrm{e}^{-\beta E_i}}{Z}
+\end{equation}
+
+With:
+
+\begin{equation}
+    Z = \sum_{i} \textrm{e}^{-\beta E_i}
+\end{equation}
+
+Be careful, now the parameter $\beta$ is just a Lagrange multiplier. And we haven't proven that it is the signal that commonly used in physics, $\frac{1}{k_B T}$. To show this, we have to build the connection with thermodynamics. Insert the expression of probability into the information entropy, we can get:
+
+\begin{align}
+    \frac{S}{k_B} &= -\sum_{i} p_i (-\beta E_i - \ln Z)\nonumber\\
+    &= \beta \sum_{i} p_i E_i + \ln Z\nonumber\\
+    &= \beta U + \ln Z
+\end{align}
+
+So that we have:
+
+\begin{equation}
+    \frac{1}{k_B}\dd{S} = \beta \dd{U} + U\dd{\beta} + \pdv{\ln Z}{\beta}\dd{\beta}
+\end{equation}
+
+Also:
+
+\begin{align}
+    \pdv{\ln Z}{\beta} = \frac{1}{Z}(-\sum_{i} \textrm{e}^{-\beta E_i} E_i) = -U
+\end{align}
+
+Combine this two equations, we have:
+
+\begin{equation}
+    \dd{S} = k_B\beta \dd{U}
+\end{equation}
+
+Which gives $\pdv{S}{U}|_{N, V} = k_B\beta$. For the canonical ensemble, the equilibrium state satisfies the deferential relation:
+
+\begin{equation}
+    \dd{U} = T\dd{S} - p\dd{V}
+\end{equation}
+
+Considering the volume is fixed, so $\dd{V} = 0$, which gives:
+
+\begin{equation}
+    \dd{U} = T\dd{S}
+\end{equation}
+
+It naturally gives that $\pdv{S}{U}|_{N, V} = \frac{1}{T}$. So we have:
+
+\begin{equation}
+    \beta = \frac{1}{k_B T}
+\end{equation}
+
+\subsection{Grand Canonical Ensemble}
+
+\subsection{NPT Ensemble}
+
+
+
+\end{document}
