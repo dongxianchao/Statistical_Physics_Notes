@@ -122,7 +122,143 @@ It naturally gives that $\pdv{S}{U}|_{N, V} = \frac{1}{T}$. So we have:
 
 \subsection{Grand Canonical Ensemble}
 
-\subsection{NPT Ensemble}
+For the grand canonical ensemble, both energy and particle number are allowed to change. Only the volume $V$ is fixed. In this case, we have constraints:
+
+\begin{align}
+    \bar{N} &= \sum_{i} p_i N_i =\langle N \rangle \\
+    U &= \sum_{i} E_i p_i = \langle E \rangle
+\end{align}
+
+In this case, we can write the Lagrange multiplier as:
+
+\begin{equation}
+    L = -\sum_{i} p_i \ln p_i - \alpha (\sum_{i} p_i - 1) - \beta (\sum_{i} E_i p_i - U) - \gamma (\sum_{i} p_i N_i - \bar{N})
+\end{equation}
+
+Taking derivative and we have:
+
+\begin{equation}
+    \pdv{L}{p_i} = -1 - \ln p_i - \alpha - \beta E_i - \gamma N_i = 0
+\end{equation}
+
+In this case we have:
+
+\begin{equation}
+    p_i \propto \textrm{e}^{-\beta E_i - \gamma N_i}
+\end{equation}
+
+And we can use the same approach to normalize the probability distribution by partition function:
+
+\begin{align}
+    p_i &= \frac{1}{Z}\textrm{e}^{-\beta E_i - \gamma N_i}\\
+    \Xi &= \sum_{i} \textrm{e}^{-\beta E_i - \gamma N_i}
+\end{align}
+
+Now we need to solve out the Lagrange multiplier by matching the expression to the thermodynamics. According to the basic thermodynamics relation, we have:
+
+\begin{equation}
+    \dd{U} = T\dd{S} - p \dd{V} + \mu\dd{N}
+\end{equation}
+
+The volume is fixed in this ensemble, which can give:
+
+\begin{align}
+    \dd{S} &= \frac{p}{T}\dd{V} - \frac{\mu}{T}\dd{N} + \frac{1}{T}\dd{U}\nonumber\\
+    &= - \frac{\mu}{T}\dd{N} + \frac{1}{T}\dd{U}
+\end{align}
+
+The expression for Shannon entropy is:
+
+\begin{align}
+    S &= -k_B \sum_{i} p_i \ln p_i\nonumber\\
+    &= -k_B \sum_{i} p_i (-\beta E_i - \gamma N_i - \ln \Xi)\nonumber\\
+    &= k_B \beta U + k_B\gamma \bar{N} + k_B \ln \Xi
+\end{align}
+
+Which gives:
+
+\begin{equation}
+    \dd{S} = k_B \beta \dd{U} + k_B U \dd{\beta} + k_B\bar{N}\dd{\gamma} + k_B\gamma\dd{N} + k_B \dd{\ln \Xi}
+\end{equation}
+
+Also, we have:
+
+\begin{align}
+    \dd{\ln \Xi} &= \frac{1}{\Xi}(\sum_{i} -E_i\textrm{e}^{-\beta E_i - \gamma N_i}\dd{\beta} - N_i\textrm{e}^{-\beta E_i - \gamma N_i}\dd{\gamma})\nonumber\\
+    &= -U\dd{\beta} - \bar{N}\dd{\gamma}
+\end{align}
+
+By which we have:
+
+\begin{equation}
+    \dd{S} = k_B \beta \dd{U} + k_B\gamma \dd{N}
+\end{equation}
+
+By matching this expression with that from thermodynamics, we have:
+
+\begin{align}
+    \beta = \frac{1}{k_B T}\\
+    \gamma = - \frac{\mu}{k_B T}
+\end{align}
+
+Till now, we successively obtain the expression for the grand canonical ensemble:
+
+\begin{equation}
+    p_i = \frac{1}{\Xi} \textrm{e}^{-\frac{E_i - \mu N_i}{k_B T}}
+\end{equation}
+
+\subsection{$NPT$ Ensemble}
+
+The $NPT$ ensemble works in the same pattern. The number of particles, pressure, temperature are fixed, while the energy $E$ and volume $V$ is allowed to change. In this case we have:
+
+\begin{align}
+    \sum_{i} p_i V_i &= \bar{V}\\
+    \sum_{i} p_i E_i &= U
+\end{align}
+
+Using the same approach, we can get:
+
+\begin{equation}
+    p_i \propto \textrm{e}^{-\beta E_i - \gamma V_i}
+\end{equation}
+
+The partition function is:
+
+\begin{equation}
+    Z = \sum_{i} \textrm{e}^{-\beta E_i - \gamma V_i}
+\end{equation}
+
+And the thermodynamics can give out the relation:
+
+\begin{equation}
+    \dd{S} = \frac{1}{T}\dd{U} + \frac{P}{T}\dd{V}
+\end{equation}
+
+And we can get the expression of entropy as:
+
+\begin{equation}
+    \frac{S}{k_B} = \beta U + \gamma \bar{V} + \ln Z
+\end{equation}
+
+Take derivative on $\ln Z$:
+
+\begin{align}
+    \dd{\ln Z} &= (\sum_{i}-E_i p_i \dd{\beta} - \sum_{i}V_i p_i \dd{\gamma})\nonumber\\
+    &= -U\dd{\beta} - \bar{V}\dd{\gamma}
+\end{align}
+
+By matching the coefficients, we have:
+
+\begin{align}
+    k_B \beta = \frac{1}{T}\\
+    k_B \gamma = \frac{P}{T}
+\end{align}
+
+Thus, we can get:
+
+\begin{equation}
+    p_i = \frac{\textrm{e}^{-\frac{E_i + PV_i}{k_B T}}}{Z}
+\end{equation}
 
 
 
