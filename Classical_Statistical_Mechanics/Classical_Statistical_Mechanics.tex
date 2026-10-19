@@ -4,7 +4,26 @@
 \section{\textbf{Classical Statistical Mechanics}}
 \makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
 
-In this section, we will derive the probability distribution of different ensemble. Here ``ensemble'' means the system under different specific boundary conditions. Typically, there are  microcanonical ensemble, canonical ensemble, grand canonical ensemble, and $NPT$ ensemble. Microcanonical ensemble is the system that has the number of particles $N$, the total volume $V$, and the total energy $E$, fixed. Canonical ensemble is the system that has $N$, $V$ fixed, while allowing exchange energy with surroundings. Grand canonical ensemble allows system to exchange not only energy, but the particles. Only requires $V$ fixed. For $NPT$ ensemble, it's obviously that, it fixes the $N$, temperature $T$ and pressure $P$. In general, the probability distribution for all kinds of ensemble, can be derived by maximizing the Shannon entropy, with constraints applied.
+In this section, we will derive the probability distribution of different ensemble. Here ``ensemble'' means the system under different specific boundary conditions. Typically, in ideal gas system, there are  microcanonical ensemble, canonical ensemble, grand canonical ensemble, and $NPT$ ensemble. Microcanonical ensemble is the system that has the number of particles $N$, the total volume $V$, and the total energy $E$, fixed. Canonical ensemble is the system that has $N$, $V$ fixed, while allowing exchange energy with surroundings. Grand canonical ensemble allows system to exchange not only energy, but the particles. Only requires $V$ fixed. For $NPT$ ensemble, it's obviously that, it fixes the $N$, temperature $T$ and pressure $P$. In general, the probability distribution for all kinds of ensemble, can be derived by maximizing the Shannon entropy, with constraints applied. In general, the key idea here is to use the expression of Shannon entropy as the thermodynamics entropy. Based on that, we can derive the whole picture of classical statistical mechanics.
+
+\subsection{Energy Representation and Entropy Representation}
+
+We have to introduce this concept to avoid something confusing. You may see some functions with variables denoted as $(N, V, E)$, while others may be denoted as $(S, V, N)$, and so on. The variables reflect that, which ensemble you are using to describe the thermodynamics system.  In ideal gas system, we have the fundamental thermodynamics relation as:
+
+\begin{equation}
+    \dd{U} = T\dd{S} - p\dd{V} + \mu \dd{N}
+\end{equation}
+
+Also, we can rewrite it as:
+
+\begin{equation}
+    \dd{S} = \frac{1}{T}\dd{U} + \frac{p}{T} \dd{V} - \frac{\mu}{T}\dd{N}
+\end{equation}
+
+Which means that, for the thermodynamics manifold, we can express it in the energy representation $U(S, V, N)$ or the entropy representation $S(N, V, E)$. In these two different representations, the Legendre transformation will be different, and the dual pairs will also be different.
+
+(To be continue)
+
 
 \subsection{Microcanonical Ensemble}
 
@@ -225,7 +244,7 @@ Using the same approach, we can get:
 The partition function is:
 
 \begin{equation}
-    Z = \sum_{i} \textrm{e}^{-\beta E_i - \gamma V_i}
+    \Delta = \sum_{i} \textrm{e}^{-\beta E_i - \gamma V_i}
 \end{equation}
 
 And the thermodynamics can give out the relation:
@@ -237,13 +256,13 @@ And the thermodynamics can give out the relation:
 And we can get the expression of entropy as:
 
 \begin{equation}
-    \frac{S}{k_B} = \beta U + \gamma \bar{V} + \ln Z
+    \frac{S}{k_B} = \beta U + \gamma \bar{V} + \ln \Delta
 \end{equation}
 
-Take derivative on $\ln Z$:
+Taking derivative on $\ln \Delta$:
 
 \begin{align}
-    \dd{\ln Z} &= (\sum_{i}-E_i p_i \dd{\beta} - \sum_{i}V_i p_i \dd{\gamma})\nonumber\\
+    \dd{\ln \Delta} &= (\sum_{i}-E_i p_i \dd{\beta} - \sum_{i}V_i p_i \dd{\gamma})\nonumber\\
     &= -U\dd{\beta} - \bar{V}\dd{\gamma}
 \end{align}
 
@@ -257,9 +276,149 @@ By matching the coefficients, we have:
 Thus, we can get:
 
 \begin{equation}
-    p_i = \frac{\textrm{e}^{-\frac{E_i + PV_i}{k_B T}}}{Z}
+    p_i = \frac{\textrm{e}^{-\frac{E_i + PV_i}{k_B T}}}{\Delta}
 \end{equation}
 
+\subsection{Generalized Ensemble}
 
+You may already find that, all the derivation about the ensemble, obeys a set of same procedures. Here we can make it more abstract. Assume we have a system, and we know a set of observables, which gives that $O_i^{(1)}, O_i^{(2)}, \dots O_i^{(n)}$ for the $i$ configuration. Also, we know the statistics average about this quantity as $\langle O^{(1)} \rangle, \langle O^{(2)} \rangle, \dots \langle O^{(n)} \rangle$. To maximize the entropy, we can set the Lagrange multiplier as:
+
+\begin{equation}
+    L = -\sum_{i} p_i \ln p_i - \alpha (\sum_{i} p_i - 1) - \sum_{k} \lambda_k (\sum_{i} p_i O_i^{(k)} - \langle O^{(k)} \rangle)
+\end{equation}
+
+And we can always get:
+
+\begin{equation}
+    p_i = \frac{1}{Z} \textrm{e}^{-\sum_{k} \lambda_k O^{(k)}_i}
+\end{equation}
+
+With the partition function:
+
+\begin{equation}
+    Z = \sum_{i} \textrm{e}^{-\sum_{k} \lambda_k O^{(k)}_i}
+\end{equation}
+
+The partition function is generally cumulant generating function:
+
+\begin{equation}
+    \frac{1}{Z}\pdv{Z}{\lambda_k} = \pdv{\ln Z}{\lambda_k} = -\langle O^{(k)} \rangle
+\end{equation}
+
+It can be proved. If we want to get the moment generating function of $O^{(m)}$, we have:
+
+\begin{equation}
+    Z = \sum_{i} \textrm{e}^{-\sum_{k \neq m} \lambda_k O^{(k)}_i}\textrm{e}^{-\lambda_m O_i^{(m)}}
+\end{equation}
+
+And we can extract a normalization factor $Z_0 = \sum_{i} \textrm{e}^{-\sum_{k \neq m} \lambda_k O^{(k)}_i}$, which gives:
+
+\begin{align}
+    Z &= Z_0 \sum_{i} (\frac{\textrm{e}^{-\sum_{k \neq m} \lambda_k O^{(k)}_i}}{Z_0})\textrm{e}^{-\lambda_m O_i^{(m)}}\nonumber\\
+    &= Z_0 \sum_{i} p'_i \textrm{e}^{-\lambda_m O_i^{(m)}}\nonumber\\
+    &= Z_0 \mathbb{E}[\textrm{e}^{-\lambda_m O^{(m)}}] 
+\end{align}
+
+Here $p'_i = \frac{\textrm{e}^{-\sum_{k \neq m} \lambda_k O^{(k)}_i}}{Z_0}$. The expression now turns into a typical moment generating function with an extra constant factor. Then we can take logarithm to both side and obtain:
+
+\begin{equation}
+    \ln Z = \ln Z_0 + \ln \mathbb{E}[\textrm{e}^{-\lambda_m O^{(m)}}] 
+\end{equation}
+
+That gives the cumulant generating function.
+
+Also, there's another structure of the generalized ensemble, which is the entropy. We've already got the generalized expression for the probability, we can instantly obtain the expression for the entropy:
+
+\begin{align}
+    \frac{S}{k_B} &= -\sum_{i} p_i \ln p_i\nonumber\\
+    &= -\sum_{i} p_i (-\sum_{k} \lambda_k O^{(k)}_i - \ln Z)\nonumber\\
+    &= \sum_{k} \lambda_k \langle O^{(k)} \rangle + \ln Z
+\end{align}
+
+So we can get the expression:
+
+\begin{equation}
+    \ln Z = \frac{S}{k_B} - \sum_{k} \lambda_k \langle O^{(k)} \rangle
+\end{equation}
+
+And in the right-hand side, the term $\sum_{k} \lambda_k \langle O^{(k)} \rangle$, is the Legendre transformation in the basic thermodynamics relation. For example, in canonical ensemble, we only have $\lambda = \beta$, and $\langle O \rangle = U$, which gives:
+
+\begin{align}
+    \ln Z &= \frac{S}{k_B} - \beta U\nonumber\\
+    &= -\beta(U - TS)\nonumber\\
+    &= -\beta F
+\end{align}
+
+Similarly, for grand canonical ensemble, we have:
+
+\begin{align}
+    \ln \Xi &= \frac{S}{k_B} - \beta U + \beta \mu N \nonumber\\
+    &= -\beta (U - TS - N\mu) \nonumber\\
+    &= -\beta \Omega
+\end{align}
+
+For $NPT$ ensemble, we have:
+
+\begin{align}
+    \ln \Delta &= \frac{S}{k_B} - \beta U - \beta pV \nonumber\\
+    &= -\beta (U - TS + pV) \nonumber\\
+    &= -\beta G
+\end{align}
+
+\subsection{Ideal Gas}
+
+There is a very classical system, which is called ideal gas. Ideal gas is based on the assumption that, each object can be treated as identical mass sphere. Also, the ideal gas is dilute so that there's no explicit interaction term when we write the Hamiltonian. In this case, the Hamiltonian can be simply written as the summation of the single object Hamiltonian. Assuming we have a system that contains $N$ particles, with the $i$-th particle has the position and momentum as $\{\bm{q}_i, \bm{p}_i\}$, then the Hamiltonian of the system can be written as:
+
+\begin{equation}
+    H = \sum_{i = 1}^{N} \frac{\bm{p}_i^2}{2m} + U(\bm{q}_i)
+\end{equation}
+
+Here $U$ is the external potential energy. Let's consider the non-external potential case, which is $U(\bm{q}_i) = 0$. And we can consider the microcanonical ensemble case, which fixed the $(N, V, E)$. So the overall configuration number is $\Omega(N, V, E)$. Let's try to solve it out. 
+
+For fixed $N$, $V$, $E$, we have expression that:
+
+\begin{equation}
+    E = \sum_{i = 1}^{N} \frac{\bm{p}_i^2}{2m}
+\end{equation}
+
+The geometry here can be treated as a $3N$ dimensional sphere, with radius of $\sqrt{2mE}$. In this case, the total number of states should be the surface area of the sphere times the density of states. The formulation for the volume of $N$ dimensional sphere is:
+
+\begin{equation}
+    V_N(R) = \frac{\pi^{N/2}}{\Gamma\left(\frac{N}{2} + 1\right)} R^N
+\end{equation}
+
+Here $\Gamma$ function is defined as $\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}\,\dd{t} = (z - 1)!$. There is a problem that, the state is not well-defined in the momentum space. Which will cause the integration to the infinite. There are numerous points on the surface area, and the summation of these points will cause the undefined result. To deal with this problem, remember in quantum mechanics, we have uncertainty relation for the coordination and momentum as $\Delta q \cdot \Delta p \sim h$. Here $h$ is the Planck constant. Be careful, here the minimum building block is composed by both the contribution from momentum space and coordination space. The overall configuration space is composed by the coupling of a $3N - 1$ dimensional momentum space (the momentum sphere) and a $3N$ dimensional coordination space. To apply the renormalization of $h$ here, we have to raise the $3N - 1$ dimensional momentum space to the $3N$ dimensional space, with each particle owns $3N$ momentum space and $3N$ coordination space. It can be proved that, for $N \to \infty$, the main contribution of the volume is from the small shell at the surface of the sphere. Thus, we can allow $E$ to change a little bit, that means, the energy is fixed at a very small region at $(E, E + \dd E)$. In this case, we can reduce the problem from solving the surface into solving the volume of a small shell near the radius, which is $3N$ dimensional space, and the value of the shell can be approximately treated as the volume of the whole sphere, then we have:
+
+\begin{align}
+    \Omega(N, V, E) &= \frac{1}{h^{3N} N!} \int\dd[3N]{q} \int_{E}^{E + \dd E} \dd[3N]{p}\nonumber\\
+    &= \frac{V^{N}}{h^{3N} N!} \frac{\pi^{3N/2}}{\Gamma\left(\frac{3N}{2} + 1\right)} (2mE)^\frac{3N}{2}
+\end{align}
+
+The factor of $N$ means the particles are indistinguishable. Taking logarithm of it, and apply Sterling formulation $\ln N! \approx N\ln N - N$, we have:
+
+\begin{align}
+    \ln \Omega &= N \ln V + \frac{3N}{2}\ln (\frac{2\pi mE}{h^2}) + N - \frac{3N}{2} \ln \frac{3N}{2} + \frac{3N}{2}\nonumber\\
+    &= N \ln \frac{V}{N} + \frac{3N}{2}\ln (\frac{4\pi mE}{3N h^2}) + \frac{5N}{2} \nonumber\\
+    &= N \ln\left[ (\frac{4\pi mE}{3N h^2})^\frac{3}{2} \frac{V}{N}\right]  + \frac{5N}{2}
+\end{align}
+
+So we can get the absolute entropy for the ideal gas in the $NVE$ ensemble:
+
+\begin{equation}
+    S = k_B\ln \Omega = N k_B \ln\left[ (\frac{4\pi mE}{3N h^2})^\frac{3}{2} \frac{V}{N}\right]  + \frac{5N k_B}{2}
+\end{equation}
+
+It can be easily verified that:
+
+\begin{align}
+    (\pdv{S}{E})_{N, V} &= \frac{3}{2}N k_B \frac{1}{E}\\
+    (\pdv{S}{V})_{N, E} &= N k_B \frac{1}{V} 
+\end{align}
+
+Then we can get $E = \frac{3}{2} k_B T$ and $pV = N k_B T$, according to the fundamental thermodynamics relation:
+
+\begin{equation}
+    \dd U = T\dd S - p\dd V + \mu\dd N
+\end{equation}
 
 \end{document}

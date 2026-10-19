@@ -1,0 +1,33 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Appendix}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+\subsection{Taylor Expansion}
+
+Here are some useful formulations for the usually used Taylor expansion. For the Taylor expansion at $x = 0$, we have expressions as:
+
+\begin{align}
+    e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^n}{n!} + o(x^n)\\
+    \ln(1+x) &= x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots + (-1)^{n-1}\frac{x^n}{n} + o(x^n)\\
+    \sin x &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots + (-1)^n \frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+2})\\
+    \cos x &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots + (-1)^n \frac{x^{2n}}{(2n)!} + o(x^{2n+1})\\
+    \tan x &= x + \frac{1}{3}x^3 + \frac{2}{15}x^5 + o(x^5)\\
+    \cot x &= \frac{\cos x}{\sin x} = \frac{1}{x} - \frac{1}{3}x - \frac{1}{45}x^3 - \frac{2}{945}x^5 + o(x^5)\\
+    \arcsin x &= x + \frac{1}{6}x^3 + \frac{3}{40}x^5 + o(x^5)\\
+    \arctan x &= x - \frac{x^3}{3} + \frac{x^5}{5} - \cdots + (-1)^n \frac{x^{2n+1}}{2n+1} + o(x^{2n+2})\\
+    \frac{1}{1-x} &= 1 + x + x^2 + x^3 + \cdots + x^n + o(x^n)\\
+    (1+x)^\alpha &= 1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \cdots + \frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^n + o(x^n)\\
+    \sinh x &= x + \frac{x^3}{3!} + \frac{x^5}{5!} + \cdots + \frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+2})\\
+    \cosh x &= 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \cdots + \frac{x^{2n}}{(2n)!} + o(x^{2n+1})\\
+    \tanh x &= x - \frac{1}{3}x^3 + \frac{2}{15}x^5 + o(x^5)\\
+    \coth x &= \frac{\cosh x}{\sinh x} = \frac{1}{x} + \frac{1}{3}x - \frac{1}{45}x^3 + \frac{2}{945}x^5 + o(x^5)
+\end{align}
+
+\subsection{Useful Integrations}
+
+Here are some useful formulations for some typical integrations:
+
+
+\end{document}
